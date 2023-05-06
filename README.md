@@ -28,11 +28,18 @@ for stock in assets:
                               end = today )['Adj Close']
 ```
 
--- img of dataset
-However, date now is index not a column, I reset dataset 
-img of data reset
 
-Next I visualize 9 stocks 
+<picture>
+  <img  src="https://user-images.githubusercontent.com/129776645/236632033-c532e1f5-d69c-4424-ab74-9dc68f9a5844.png">
+</picture>
+ 
+However, date now is index not a column, I reset dataset 
+<picture>
+  <img  src="https://user-images.githubusercontent.com/129776645/236632019-98361f1e-ad66-4e68-8ed0-2b9671366f6f.png">
+</picture>
+ 
+
+📈 Next I visualize 9 stocks 
 
 ```py
 def interactive_plot(data, title):
@@ -43,39 +50,60 @@ def interactive_plot(data, title):
 # Plot interactive chart
 interactive_plot(df_reset, 'Prices')
 ```
+<picture>
+  <img  src="https://user-images.githubusercontent.com/129776645/236632337-6dcb21e0-93ac-4925-9870-179dee513fe4.png">
+</picture>
+
+
+
+
 
 - Capital Asset Pricing Model
 
 The formula for calculating the expected return of an asset, given its risk, is as follows:
--- img model
-Investors expect to be compensated for risk and the time value of money. The risk-free rate in the CAPM formula accounts for the time value of money. The other components of the CAPM formula account for the investor taking on additional risk.
+<picture>
+  <img  src="https://user-images.githubusercontent.com/129776645/236631994-86c799b1-02d9-41f4-aece-1fec1078c1b3.png">
+</picture>
 
-The goal of the CAPM formula is to evaluate whether a stock is fairly valued when its risk and the time value of money are compared with its expected return. In other words, by knowing the individual parts of the CAPM, it is possible to gauge whether the current price of a stock is consistent with its likely return.
+ 🔎 Investors expect to be compensated for risk and the time value of money. The risk-free rate in the CAPM formula accounts for the time value of money. The other components of the CAPM formula account for the investor taking on additional risk.
+
+📌 The goal of the CAPM formula is to evaluate whether a stock is fairly valued when its risk and the time value of money are compared with its expected return. In other words, by knowing the individual parts of the CAPM, it is possible to gauge whether the current price of a stock is consistent with its likely return.
+
  - Risk Free Asset (rf): A risk-free asset is one that has a certain future return—and virtually no possibility of loss. Debt obligations issued by the U.S. Department of the Treasury (bonds, notes, and especially Treasury bills) are considered to be risk-free because the "full faith and credit" of the U.S. government backs them. 
-- Market Portfolio(rm) A market portfolio is a theoretical bundle of investments that includes every type of asset available in the investment universe, with each asset weighted in proportion to its total presence in the market. The expected return of a market portfolio is identical to the expected return of the market as a whole. Market portfolios are a key part of the capital asset pricing model, a commonly used foundation for choosing which investments to add to a diversified portfolio. The market portfolio is an essential component of the capital asset pricing model (CAPM). Widely used for pricing assets, especially equities, the CAPM shows what an asset's expected return should be based on its amount of systematic risk. The relationship between these two items is expressed in an equation called the security market line.
+ - Market Portfolio(rm) A market portfolio is a theoretical bundle of investments that includes every type of asset available in the investment universe, with each asset weighted in proportion to its total presence in the market. The expected return of a market portfolio is identical to the expected return of the market as a whole. Market portfolios are a key part of the capital asset pricing model, a commonly used foundation for choosing which investments to add to a diversified portfolio. The market portfolio is an essential component of the capital asset pricing model (CAPM). Widely used for pricing assets, especially equities, the CAPM shows what an asset's expected return should be based on its amount of systematic risk. The relationship between these two items is expressed in an equation called the security market line.
  - Beta
 Beta (β), primarily used in the capital asset pricing model (CAPM), is a measure of the volatility–or systematic risk–of a security or portfolio compared to the market as a whole.
 Beta data about an individual stock can only provide an investor with an approximation of how much risk the stock will add to a (presumably) diversified portfolio.
 
 For beta to be meaningful, the stock should be related to the benchmark that is used in the calculation.
 
+<picture>
+  <img  src="https://user-images.githubusercontent.com/129776645/236631854-a9c3bfec-4a41-47ec-a9b0-cc1288032ddc.png">
+</picture>
+ 
+
 The S&P 500 has a beta of 1.0. Stocks with betas above 1 will tend to move with more momentum than the S&P 500; stocks with betas less than 1 with less momentum.
--- img of beta
-Beta Value Equal to 1.0
+
+<picture>
+  <img  src="https://user-images.githubusercontent.com/129776645/236631854-a9c3bfec-4a41-47ec-a9b0-cc1288032ddc.png">
+</picture>
+ 
+- Beta Value Equal to 1.0
 
 If a stock has a beta of 1.0, it indicates that its price activity is strongly correlated with the market. A stock with a beta of 1.0 has systematic risk. However, the beta calculation can’t detect any unsystematic risk. Adding a stock to a portfolio with a beta of 1.0 doesn’t add any risk to the portfolio, but it also doesn’t increase the likelihood that the portfolio will provide an excess return.
 
-Beta Value Less Than One
+- Beta Value Less Than One
 
 A beta value that is less than 1.0 means that the security is theoretically less volatile than the market. Including this stock in a portfolio makes it less risky than the same portfolio without the stock. For example, utility stocks often have low betas because they tend to move more slowly than market averages.
 
-Beta Value Greater Than One
+- Beta Value Greater Than One
 
 A beta that is greater than 1.0 indicates that the security's price is theoretically more volatile than the market. For example, if a stock's beta is 1.2, it is assumed to be 20% more volatile than the market. Technology stocks and small cap stocks tend to have higher betas than the market benchmark. This indicates that adding the stock to a portfolio will increase the portfolio’s risk, but may also increase its expected return.
 
-Negative Beta Value
+📍 Negative Beta Value
 
 Some stocks have negative betas. A beta of -1.0 means that the stock is inversely correlated to the market benchmark on a 1:1 basis. This stock could be thought of as an opposite, mirror image of the benchmark’s trends. Put options and inverse ETFs are designed to have negative betas. There are also a few industry groups, like gold miners, where a negative beta is also common.
+
 
 # Calculate the daily returns
 ```py
@@ -96,35 +124,67 @@ def daily_return(data):
     df_daily_return[i][0] = 0
   return df_daily_return
 ```
+
 # Calculate beta for a single stock
 ```py
 stocks_daily_return['IBM']
 stocks_daily_return['SPY'].head()
-
+```
+⚙️
+```py
 beta, alpha = np.polyfit(stocks_daily_return['SPY'], stocks_daily_return['IBM'], 1)
 print('Beta for {} stock is = {} and alpha is = {}'.format('IBM', round(beta,3), round(alpha,3)))
+```
+Beta for IBM stock is = 0.861 and alpha is = -0.022
 
+⚙️
+```py
 beta, alpha = np.polyfit(stocks_daily_return['SPY'], stocks_daily_return['PFE'], 1)
 print('Beta for {} stock is = {} and alpha is = {}'.format('PFE', round(beta,3), round(alpha,3)))
+```
+Beta for PFE stock is = 0.646 and alpha is = 0.007
 
+⚙️
+```py
 beta, alpha = np.polyfit(stocks_daily_return['SPY'], stocks_daily_return['META'], 1)
 print('Beta for {} stock is = {} and alpha is = {}'.format('META', round(beta,3), round(alpha,3))) 
+```
+Beta for META stock is = 1.265 and alpha is = 0.022
 
+⚙️
+```py
 beta, alpha = np.polyfit(stocks_daily_return['SPY'], stocks_daily_return['AMZN'], 1)
 print('Beta for {} stock is = {} and alpha is = {}'.format('AMZN', round(beta,3), round(alpha,3)))
+```
+Beta for AMZN stock is = 1.136 and alpha is = 0.06
 
+⚙️
+```py
 beta, alpha = np.polyfit(stocks_daily_return['SPY'], stocks_daily_return['TSLA'], 1)
 print('Beta for {} stock is = {} and alpha is = {}'.format('TSLA', round(beta,3), round(alpha,3)))
+```
+Beta for TSLA stock is = 1.441 and alpha is = 0.113
 
+⚙️
+```py
 beta, alpha = np.polyfit(stocks_daily_return['SPY'], stocks_daily_return['NFLX'], 1)
 print('Beta for {} stock is = {} and alpha is = {}'.format('NFLX', round(beta,3), round(alpha,3)))
+```
+Beta for NFLX stock is = 1.183 and alpha is = 0.076
 
+⚙️
+```py
 beta, alpha = np.polyfit(stocks_daily_return['SPY'], stocks_daily_return['GOOG'], 1)
 print('Beta for {} stock is = {} and alpha is = {}'.format('GOOG', round(beta,3), round(alpha,3)))
+```
+Beta for GOOG stock is = 1.151 and alpha is = 0.029
 
+⚙️
+```py
 beta, alpha = np.polyfit(stocks_daily_return['SPY'], stocks_daily_return['MOD'], 1)
 print('Beta for {} stock is = {} and alpha is = {}'.format('MOD', round(beta,3), round(alpha,3)))
 ```
+Beta for MOD stock is = 1.289 and alpha is = 0.015
 
 # 
 Assume risk free rate is zero
@@ -140,6 +200,8 @@ rf = 0.66
 rm = round(stocks_daily_return['SPY'].mean() * 252,3) # this is the expected return of the market 
 rm
 ```
+# Calculate beta for all stocks
+
 
 ```py
 for i in keys:
@@ -158,12 +220,13 @@ Expected Return Based on CAPM for GOOG is 13.575%
 Expected Return Based on CAPM for MOD is 15.125%
 
 # Calculate the portfolio return
+🟢
 ```py
 ER_portfolio_all = round(sum(list(ER.values()) * portfolio_weights),3)
 print('Expected Return Based on CAPM for the portfolio  is {}%\n'.format(ER_portfolio_all))
 ```
 
-
+🟢
 ```py
 # Calculate the portfolio return 
 ER_portfolio_ConsumerServices = round(0.50 * ER['PFE'] +  0.50 * ER['TSLA'],3)
@@ -172,6 +235,7 @@ print('Expected Return Based on CAPM for the portfolio (Consumer Services) is {}
 ```
 Expected Return Based on CAPM for the portfolio  is 15.137%
 
+🟢
 ```py
 # Calculate the portfolio return 
 ER_portfolio_ConsumerServices = round(0.50 * ER['PFE'] +  0.50 * ER['TSLA'],3)
@@ -180,7 +244,7 @@ print('Expected Return Based on CAPM for the portfolio (Consumer Services) is {}
 ```
 Expected Return Based on CAPM for the portfolio (Consumer Services) is 12.371%
 
-
+🟢
 ```py
 # Calculate the portfolio return 
 ER_portfolio_PersonalDevices = round(0.25 * ER['META'] +  0.25 * ER['IBM']+0.25 * ER['GOOG'] +  0.25 * ER['AMZN'],3)
@@ -189,6 +253,7 @@ print('Expected Return Based on CAPM for the portfolio (Personal Devices Sector)
 ```
 Expected Return Based on CAPM for the portfolio (Personal Devices Sector) is 13.041%
 
+🟢
 ```py
 # Calculate the portfolio return 
 ER_portfolio_Manufacturing = round(0.50 * ER['TSLA'] +  0.50 * ER['MOD'],3)
@@ -197,7 +262,7 @@ print('Expected Return Based on CAPM for the portfolio (Manufacturing Sector) is
 ```
 Expected Return Based on CAPM for the portfolio (Manufacturing Sector) is 15.977%
 
-
+🟢
 ```py
 ER_portfolio_bm = round(0.5 * ER['PFE'] +  0.5 * ER['IBM'],3)
 print('Expected Return Based on CAPM for the portfolio (Less than Market Return) is {}%\n'
@@ -205,7 +270,7 @@ print('Expected Return Based on CAPM for the portfolio (Less than Market Return)
 ```
 Expected Return Based on CAPM for the portfolio (Less than Market Return) is 9.119%
 
-
+🟢
 Expected Return Based on CAPM for the portfolio (Above than  Market Return) is 14.622%
 
 Contribution on CAPM for IBM is 0.1
@@ -217,6 +282,7 @@ Contribution on CAPM for NFLX is 0.13
 Contribution on CAPM for GOOG is 0.13
 Contribution on CAPM for MOD is 0.14
 
+🟢
 ```py
 # Calculate the portfolio return 
 ER_portfolio_ed = round(0.50 * ER['PFE'] +  0.50 * ER['TSLA'],3)
@@ -230,8 +296,15 @@ Expected Return Based on CAPM for the portfolio (Extremes) is 12.371%
 - Suggest investing
 After calculating the expected return based on CAPM, I would recommend investing in stocks as well as combinations
 
+<picture>
+  <img  src="https://user-images.githubusercontent.com/129776645/236632009-490db4a4-501c-40c9-80ed-67d606730909.png">
+</picture>
+ 
 
-
+<picture>
+  <img  src="https://user-images.githubusercontent.com/129776645/236632002-c6ca1c59-a69d-49dc-8694-d947e38ff3df.png">
+</picture>
+ 
 
 
 
